@@ -1,0 +1,52 @@
+
+{# base.html: plantilla principal que comparten todas las paginas #}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {# Permite mostrar acentos y caracteres especiales #}
+    <meta charset="UTF-8">
+
+    {# Adapta la pagina a celulares y computadoras #}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {# Permite cambiar el titulo de cada pagina #}
+    <title>{% block titulo %}Servicios{% endblock %}</title>
+
+    {# Tailwind para los estilos de la pagina #}
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    {# Estilos para los campos de los formularios #}
+    <style>
+        input, textarea, select {
+            border: 1px solid #94a3b8;
+            border-radius: .5rem;
+            padding: .4rem .6rem;
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: .2rem;
+        }
+
+        .errorlist {
+            color: #dc2626;
+            font-size: .9rem;
+        }
+
+        .helptext {
+            color: #64748b;
+            font-size: .8rem;
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="max-w-2xl mx-auto py-10 px-6 bg-white text-slate-900">
+
+    {# Aqui se mostrara el contenido de cada pagina #}
+    {% block contenido %}{% endblock %}
+
+</body>
+</html>

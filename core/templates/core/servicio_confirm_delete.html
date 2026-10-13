@@ -1,0 +1,40 @@
+
+{% extends 'core/base.html' %}
+
+{# Titulo de la pestaña del navegador #}
+{% block titulo %}Eliminar servicio{% endblock %}
+
+{# Contenido principal de la pagina #}
+{% block contenido %}
+
+    {# Pregunta para confirmar la eliminacion #}
+    <h1 class="text-2xl font-bold mb-4">
+        ¿Eliminar "{{ servicio.titulo }}"?
+    </h1>
+
+    {# Advierte que no se puede recuperar el servicio #}
+    <p class="mb-6 text-slate-600">
+        Esta accion no se puede deshacer.
+    </p>
+
+    {# Formulario para confirmar la eliminacion #}
+    <form method="POST">
+
+        {# Proteccion contra ataques CSRF #}
+        {% csrf_token %}
+
+        {# Boton para eliminar el servicio #}
+        <button type="submit"
+                class="bg-red-600 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded-lg">
+            Sí, eliminar
+        </button>
+
+        {# Regresa al listado sin eliminar el servicio #}
+        <a href="{% url 'servicios' %}"
+           class="ml-3 text-slate-600 underline">
+            Cancelar
+        </a>
+
+    </form>
+
+{% endblock %}

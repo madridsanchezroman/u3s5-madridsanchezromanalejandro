@@ -1,13 +1,27 @@
-# path: función para definir una ruta individual
+
+# path: permite crear rutas para las paginas
 from django.urls import path
-# views: el archivo que acabás de escribir, en la misma carpeta
+
+# views: importa las funciones de nuestro archivo views.py
 from . import views
 
-# urlpatterns: lista de rutas que esta app entiende
+
+# Lista de rutas de nuestra aplicacion
 urlpatterns = [
-    # '': la URL vacía (la raíz de esta app) · views.inicio: la función que la atiende
-    # name='inicio': un alias interno para referirse a esta ruta sin escribir la URL a mano
+
+    # Pagina de inicio de la Semana 3
     path('', views.inicio, name='inicio'),
-        # nueva ruta 'servicios/' → función views.servicios → alias 'servicios'
+
+    # Muestra todos los servicios guardados en MySQL
     path('servicios/', views.servicios, name='servicios'),
+
+    # Permite registrar un nuevo servicio
+    path('servicios/nuevo/', views.crear_servicio, name='crear_servicio'),
+
+    # Permite editar un servicio mediante su ID
+    path('servicios/<int:pk>/editar/', views.editar_servicio, name='editar_servicio'),
+
+    # Permite eliminar un servicio mediante su ID
+    path('servicios/<int:pk>/eliminar/', views.eliminar_servicio, name='eliminar_servicio'),
+
 ]
